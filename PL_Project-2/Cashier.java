@@ -6,7 +6,7 @@ public class Cashier {
     static Scanner console = new Scanner(System.in);
     static int totalMax, receiptMarker;
 
-    static void cashier() {
+    public static void cashier() {
         Main.validInput = false;
         totalMax = -1;
         receiptMarker = -1;
@@ -14,10 +14,11 @@ public class Cashier {
         do {
             do {
                 Terminal.clearScreen();
-                System.out.println("=-=-=-= CASHIER =-=-=-= \n");
-                System.out.println("(1) New Customer");
-                System.out.println("(0) Log out \n");
-                System.out.print("Select: ");
+                Terminal.gotoxy(15,10); System.out.println("=-=-=-= CASHIER =-=-=-=");
+                Terminal.gotoxy(15,13); System.out.println("(1) New Customer");
+                Terminal.gotoxy(15,15); System.out.println("(0) Log out");
+                Terminal.gotoxy(15,18); System.out.println("=-=-=-=-=-=-=-=-=-=-=-=");
+                Terminal.gotoxy(15,20); System.out.print("Select: ");
 
                 if(console.hasNextInt()){
                     Main.choice = console.nextInt();
@@ -38,31 +39,33 @@ public class Cashier {
     }
 
 
-    static void punch(){
+    public static void punch(){
         Inventory product = new Inventory();
         Receipt receipt = new Receipt();
         int inventoryPos, receiptPos;
 
         Terminal.clearScreen();
-        System.out.println("=-=-= PUNCH PRODUCT =-=-= \n");
-        console.nextLine();
-        System.out.print("Product name: ");
+        Terminal.gotoxy(15,10); System.out.println("=-=-= PUNCH PRODUCT =-=-=");
+        console.nextLine();                             
+        Terminal.gotoxy(15,13); System.out.print("Product name: ");
         String productName = console.nextLine();
         receipt.productName = productName.toUpperCase();
-        System.out.print("Quantity: ");
+        Terminal.gotoxy(15,15); System.out.print("Quantity: ");
         receipt.quantity = console.nextInt();
-        
-        // pass receipt name to inventory name variable;
-        product.name = receipt.productName;
-        inventoryPos = Main.locateProduct(product);
-        if(inventoryPos == -1){
-            System.out.println("\n\nPRODUCT DOES NOT EXIST\n\n");
-            receipt = new Receipt();            // initialize again
+
+        product.name = receipt.productName;                     // pass receipt name to inventory name variable;
+        inventoryPos = Main.locateProduct(product);             // locate the name to inventory
+
+        if(inventoryPos == -1){                                 // if not exist
+            Terminal.gotoxy(15,18); System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+            Terminal.gotoxy(15,20); System.out.println("PRODUCT DOES NOT EXIST");
+            receipt = new Receipt();                            // initialize again
             Main.console.nextLine();
         }
         else {
             if(Main.my_inv[inventoryPos].qty == 0 || Main.my_inv[inventoryPos].qty - receipt.quantity < 0){
-                System.out.println("\n\nINSUFFICIENT AMOUNT\n");
+                Terminal.gotoxy(15,18); System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+                Terminal.gotoxy(15,20); System.out.println("INSUFFICIENT AMOUNT");
                 receipt = new Receipt();        // initialize again
                 console.nextLine();
             }
@@ -89,11 +92,9 @@ public class Cashier {
                 Main.my_inv[inventoryPos].total_sales_amount += Main.my_inv[inventoryPos].retail_price * receipt.quantity;
                 Main.my_inv[inventoryPos].profit += Main.my_inv[inventoryPos].retail_price * receipt.quantity;
             }
-        }
-        //question loop
-        System.out.println("\n =-=-=-=-=-=-=-=-= \n");                  // NADAGDAG
-        System.out.println("Add product?");
-        System.out.println("[Y] Yes   [N] No");
+        }       
+        Terminal.gotoxy(20,24); System.out.println("Add product?");
+        Terminal.gotoxy(18,25); System.out.println("[Y] Yes  [N] No");
         char choice = console.next().charAt(0);
 
         if(!receipt.productName.equalsIgnoreCase("N/a")){   
@@ -108,7 +109,7 @@ public class Cashier {
                 for(int i=0; i<=totalMax; i++)                            
                     DataManager.recordSales(totalReceipt[i]);             
                 DataManager.save();                                       
-                displayReceipt();                                         
+                displayReceipt();                                     
             }
             initCustomerReceipt();                                             
             Cashier.cashier();                                          
@@ -116,26 +117,40 @@ public class Cashier {
     }
 
 
-    static void addToReceipt(Receipt resibo){
+    public static void addToReceipt(Receipt resibo){
         receiptMarker++;
         Main.customerReceipt[receiptMarker] = new Receipt(resibo.productName, resibo.quantity, resibo.price, resibo.totalPrice);
     }
 
 
-    static void displayReceipt(){
-        Terminal.clearScreen();
-        System.out.println("\n\n");
-        for(int i=0; i<=receiptMarker; i++){
-            System.out.println("Product: " + Main.customerReceipt[i].productName);
-            System.out.println("Quantity: " + Main.customerReceipt[i].quantity);
-            System.out.println("Price: " + Main.customerReceipt[i].price);
-            System.out.println("Amount: " + Main.customerReceipt[i].totalPrice + '\n');
+    public static void displayReceipt(){
+        int i;
+        double totalPrice = 0.0;
+        Terminal.clearScreen();                         
+                
+        Terminal.gotoxy(35,14); System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-= RECEIPT =-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Terminal.gotoxy(20,17); System.out.println("Product Name");
+        Terminal.gotoxy(38,17); System.out.println("Price");
+        Terminal.gotoxy(56,17); System.out.println("Quantity");
+        Terminal.gotoxy(74,17); System.out.println("Total Amount");
+        
+        for(i=0; i<=receiptMarker; i++){
+            Terminal.gotoxy(20,20+i); System.out.println(Main.customerReceipt[i].productName);
+            Terminal.gotoxy(38,20+i); System.out.println(Main.customerReceipt[i].quantity);
+            Terminal.gotoxy(56,20+i); System.out.println(Main.customerReceipt[i].price);
+            Terminal.gotoxy(74,20+i); System.out.println(Main.customerReceipt[i].totalPrice);
+            totalPrice += Main.customerReceipt[i].totalPrice;
         }
-        System.out.println("\n\nPress Enter to continue...");
+        String formattedTotalPrice = String.format("%.2f", totalPrice);
+        Terminal.gotoxy(20,21+i); System.out.println("Total Price: " + formattedTotalPrice);
+        Terminal.gotoxy(35,24+i); System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Terminal.gotoxy(35,27+i); System.out.println("Press Enter to continue...");
+        console.nextLine();
         console.nextLine();
     }
 
-    static void initCustomerReceipt(){
+
+    public static void initCustomerReceipt(){
         for(int i=0; i<=receiptMarker; i++){
             Main.customerReceipt[i] = null;   
         }

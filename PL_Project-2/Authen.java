@@ -30,11 +30,12 @@ public class Authen {
     static int login(){    
         do {
             Terminal.clearScreen();
-            System.out.println("=-=-= INVENTORY LOGIN  =-=-= \n");
-            System.out.println("(1) Cashier");
-            System.out.println("(2) Admin");
-            System.out.println("(0) Exit \n");
-            System.out.print("Select: ");
+            Terminal.gotoxy(15,10); System.out.println("=-=-= INVENTORY LOGIN =-=-=");
+            Terminal.gotoxy(19,13); System.out.println("(1) Cashier");
+            Terminal.gotoxy(19,15); System.out.println("(2) Admin");
+            Terminal.gotoxy(19,17); System.out.println("(0) Exit");
+            Terminal.gotoxy(15,20); System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            Terminal.gotoxy(19,22); System.out.print("Select: ");
             Authen.inputValidation();  
         } while (!Main.validInput || Main.choice < 0 || Main.choice > 2);
         
@@ -44,10 +45,10 @@ public class Authen {
         }
 
         Terminal.clearScreen();
-        System.out.println("=-=-= LOG IN =-=-=-= \n");
-        System.out.print("Enter username: ");
+        Terminal.gotoxy(15,10); System.out.println("=-=-=-= LOG IN =-=-=-=");
+        Terminal.gotoxy(15,13); System.out.print("Enter username: ");
         username = console.nextLine();
-        System.out.print("Enter password: ");
+        Terminal.gotoxy(15,15); System.out.print("Enter password: ");
         password = console.nextLine();
 
         if(Main.choice == 1){          // cashier

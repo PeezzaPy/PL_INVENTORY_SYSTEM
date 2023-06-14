@@ -1,0 +1,10 @@
+Product Name: MANGO
+Quantity: 2
+Price: 20.0
+Total Price: 40.0
+
+Product Name: SAN MARINO
+Quantity: 3
+Price: 40.0
+Total Price: 120.0
+

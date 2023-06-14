@@ -9,7 +9,7 @@ public class Category {
     public int vegetable = 1;
 
     public static String category[] = {
-        "Category: \n", 
+        "Category:", 
         "(1) Canned Goods", 
         "(2) Dairy", 
         "(3) Drink", 
@@ -20,12 +20,13 @@ public class Category {
     };
 
     public static String setGetCategory(){
+        int i;
         String catChoiceString = "";
         do {
-            for(int i=0; i<category.length; i++){
-                System.out.println(category[i]);
+            for(i=0; i<category.length; i++){
+                Terminal.gotoxy(15,13+i); System.out.println(category[i]);
             }
-            System.out.print("\nSelect: ");
+            Terminal.gotoxy(15,15+i); System.out.print("Select: ");
             Authen.inputValidation();
             
         } while(!Main.validInput || Main.choice < 1 || Main.choice > 7);

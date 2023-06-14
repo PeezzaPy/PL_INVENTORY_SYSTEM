@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 class Main {
     final static int MAX_INV = 100;
+    final static int MAX_PROD_STOCK = 50;
     public static int i, marker, receiptMarker, choice, loginChoice;
     static boolean validInput, backToLogin;
     static Inventory[] my_inv = new Inventory[MAX_INV];
@@ -39,10 +40,11 @@ class Main {
     public static void startMenu(){
         do {
             Terminal.clearScreen();
-            System.out.println("=-=-= WELCOME BACK =-=-= \n");
-            System.out.println("(1) Login");
-            System.out.println("(0) Exit \n");
-            System.out.print("Select: ");
+            Terminal.gotoxy(15,10); System.out.println("=-=-= WELCOME BACK =-=-=");
+            Terminal.gotoxy(19,13); System.out.println("(1) Login");
+            Terminal.gotoxy(19,15); System.out.println("(0) Exit");
+            Terminal.gotoxy(15,18); System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-");
+            Terminal.gotoxy(19,20); System.out.print("Select: ");
             Authen.inputValidation();  
         } while (!validInput || choice < 0 || choice > 1);
 

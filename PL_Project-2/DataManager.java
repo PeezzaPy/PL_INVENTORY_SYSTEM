@@ -228,15 +228,6 @@ public class DataManager {
         String dateString = currentDate.toString();
         boolean isExist = false;
         ctr = -1;
-        
-        System.out.println("\n\n");
-        System.out.println(sales.productName);
-        System.out.println(sales.quantity);
-        System.out.println(sales.price);
-        System.out.println(sales.totalPrice);
-        System.out.println("\n\n");
-
-        Main.console.nextLine();
 
         File sales_fp = new File (salesHistory_dir + dateString + ".txt");    
         try {

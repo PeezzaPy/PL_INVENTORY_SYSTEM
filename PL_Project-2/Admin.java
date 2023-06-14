@@ -164,11 +164,8 @@ public class Admin {
 
 
     static void settings(int my_choice){
-        name = Main.adminAcc.getName();
-        username = Main.adminAcc.getUsername();
-        password = Main.adminAcc.getPassword();
-
         do {
+            boolean isChange = false;
             if(my_choice == 1 || my_choice == 2){
                 do {
                     Terminal.clearScreen();
@@ -193,52 +190,80 @@ public class Admin {
             else {
                 Terminal.clearScreen();
                 if(my_choice == 1){                // cashier settings
+                    name = Main.cashierAcc.getName();
+                    username = Main.cashierAcc.getUsername();
+                    password = Main.cashierAcc.getPassword();
+
                     if(Main.choice == 1){
                         System.out.println("Current name: " + Main.cashierAcc.getName());
                         System.out.print("New name: ");
                         name = console.nextLine();
-                        if(name.equals(Main.cashierAcc.getName()))
-                            throw new IllegalArgumentException("NEW NAME MUST NOT BE THE SAME AS CURRENT NAME");
-                        else
+                        if(name.equals(Main.cashierAcc.getName())){
+                            System.out.println("\n\nNEW NAME MUST NOT BE THE SAME AS CURRENT NAME\n");
+                            console.nextLine();
+                        }
+                        else {
+                            isChange = true;
                             Main.cashierAcc = new Account(name, username, password);
+                        }
                     } 
                     else if(Main.choice == 2){
                         System.out.println("Current Username: " + Main.cashierAcc.getUsername());
                         System.out.print("New username: ");
                         username = console.nextLine();
-                        if(username.equals(Main.cashierAcc.getUsername()))
-                            throw new IllegalArgumentException("NEW USERNAME MUST NOT BE THE SAME AS CURRENT USERNAME");
-                        else
+                        if(username.equals(Main.cashierAcc.getUsername())){
+                            System.out.println("\n\nNEW USERNAME MUST NOT BE THE SAME AS CURRENT USERNAME\n");
+                            console.nextLine();
+                        }
+                        else {
+                            isChange = true;
                             Main.cashierAcc = new Account(name, username, password);
+                        }
                     }
                     else if(Main.choice == 3){
                         System.out.println("Current Password: " + Main.cashierAcc.getPassword());
                         System.out.print("New password: ");
                         password = console.nextLine();
-                        if(password.equals(Main.cashierAcc.getPassword()))
-                            throw new IllegalArgumentException("NEW PASSWORD MUST NOT BE THE SAME AS CURRENT PASSWORD");
-                        else
+                        if(password.equals(Main.cashierAcc.getPassword())){
+                            System.out.println("\n\nNEW PASSWORD MUST NOT BE THE SAME AS CURRENT PASSWORD\n");
+                            console.nextLine();
+                        }
+                        else {
+                            isChange = true;
                             Main.cashierAcc = new Account(name, username, password);
+                        }
                     }
                 }
                 else if(my_choice == 2){            // admin settings
+                    name = Main.adminAcc.getName();
+                    username = Main.adminAcc.getUsername();
+                    password = Main.adminAcc.getPassword();
+
                     if(Main.choice == 1){
                         System.out.println("Current name: " + Main.adminAcc.getName());
                         System.out.print("New name: ");
                         name = console.nextLine();
-                        if(name.equals(Main.adminAcc.getName()))
-                            throw new IllegalArgumentException("NEW NAME MUST NOT BE THE SAME AS CURRENT NAME");
-                        else
+                        if(name.equals(Main.adminAcc.getName())){
+                            System.out.println("\n\nNEW NAME MUST NOT BE THE SAME AS CURRENT NAME\n");
+                            console.nextLine();
+                        }
+                        else {
+                            isChange = true;
                             Main.adminAcc = new Account(name, username, password);
+                        }
                     } 
                     else if(Main.choice == 2){
                         System.out.println("Current Username: " + Main.adminAcc.getUsername());
                         System.out.print("New username: ");
                         username = console.nextLine();
-                        if(username.equals(Main.adminAcc.getUsername()))
-                            throw new IllegalArgumentException("NEW USERNAME MUST NOT BE THE SAME AS CURRENT USERNAME");
-                        else
+                        if(username.equals(Main.adminAcc.getUsername())){
+                            System.out.println("\n\nNEW USERNAME MUST NOT BE THE SAME AS CURRENT USERNAME\n");
+                            console.nextLine();
+                        }
+                        else {
+                            isChange = true;
                             Main.adminAcc = new Account(name, username, password);
+                        }
                     }
                     else if(Main.choice == 3){
                         String temp_password;
@@ -247,13 +272,19 @@ public class Admin {
                         password = console.nextLine();
                         System.out.print("Re-enter password: ");
                         temp_password = console.nextLine();
-                        if(password.equals(Main.adminAcc.getPassword()))
-                            throw new IllegalArgumentException("NEW PASSWORD MUST NOT BE THE SAME AS CURRENT PASSWORD");
+                        if(password.equals(Main.adminAcc.getPassword())){
+                            System.out.println("\n\nNEW PASSWORD MUST NOT BE THE SAME AS CURRENT PASSWORD\n");
+                            console.nextLine();
+                        }
                         else
-                            if(password.equals(temp_password))
+                            if(password.equals(temp_password)){
+                                isChange = true;
                                 Main.adminAcc = new Account(name, username, password);
-                            else
-                                throw new IllegalArgumentException("NEW PASSWORD DOES NOT MATCHED");
+                            }
+                            else {
+                                System.out.println("\n\nNEW PASSWORD DOES NOT MATCHED\n");
+                                console.nextLine();
+                            }
                     }
                 }
                 else if(my_choice == 3){
@@ -280,13 +311,13 @@ public class Admin {
                     }
                 }
 
-                if(Main.choice != 0){
+                if(Main.choice != 0 && isChange == true){
                     System.out.println("\n\nCHANGED SUCCESSFULLY");
                     Main.console.nextLine();
                     Authen.saveAccount();
                 }
 
-                if(my_choice == 3);
+                if(my_choice == 3)
                     Main.choice = 0;
             }
         } while (Main.choice != 0);

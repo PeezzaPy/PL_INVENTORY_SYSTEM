@@ -3,7 +3,6 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
-import java.io.Console;
 
 
 public class Authen {
@@ -49,7 +48,7 @@ public class Authen {
         System.out.print("Enter username: ");
         username = console.nextLine();
         System.out.print("Enter password: ");
-        password = takePassword();
+        password = console.nextLine();
 
         if(Main.choice == 1){          // cashier
             if(username.equals(Main.cashierAcc.getUsername())){
@@ -147,19 +146,6 @@ public class Authen {
             reader.close();
         } catch (IOException e){
         }
-    }
-
-    
-    public static String takePassword() {
-        Console passwordConsole = System.console();
-
-        if (passwordConsole == null) {
-            System.out.println("Console is not available");
-            System.exit(1);
-        }
-        char[] passwordArray = passwordConsole.readPassword("Enter password: ");
-        
-        return new String(passwordArray);
     }
 }
 

@@ -9,12 +9,12 @@ Price: 13.0
 Total Price: 26.0
 
 Product Name: MANGO
-Quantity: 3
+Quantity: 4
 Price: 20.0
-Total Price: 60.0
+Total Price: 80.0
 
 Product Name: RED HORSE
-Quantity: 1
+Quantity: 2
 Price: 60.0
-Total Price: 60.0
+Total Price: 120.0
 

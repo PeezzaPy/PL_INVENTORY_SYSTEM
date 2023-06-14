@@ -1,0 +1,20 @@
+Product Name: COCA COLA
+Quantity: 7
+Price: 12.0
+Total Price: 84.0
+
+Product Name: MALUNGGAY
+Quantity: 2
+Price: 13.0
+Total Price: 26.0
+
+Product Name: MANGO
+Quantity: 3
+Price: 20.0
+Total Price: 60.0
+
+Product Name: RED HORSE
+Quantity: 1
+Price: 60.0
+Total Price: 60.0
+

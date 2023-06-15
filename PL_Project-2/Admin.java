@@ -86,7 +86,8 @@ public class Admin {
     public static void addProduct(Inventory my_product){
         if(Main.isFull() == 1){
             Terminal.clearScreen();
-            System.out.println("ARRAY IS FULL\n");
+            Terminal.gotoxy(15,10); System.out.println("ARRAY IS FULL");
+            console.nextLine();
         }
         else {
             if(my_product.qty <= Main.MAX_PROD_STOCK){
@@ -125,6 +126,7 @@ public class Admin {
             Terminal.gotoxy(50, 13); System.out.println("| NOTHING IS IN THE INVENTORY | ");
             Terminal.designBox(48, 11, 5, 35);
             Terminal.gotoxy(50, 17); System.out.println("Press any key to continue...");
+            console.nextLine();
         } 
         else {
             Terminal.gotoxy(17, 13); System.out.printf("MAX PRODUCT: %d", Main.MAX_INV);

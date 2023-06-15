@@ -1,4 +1,8 @@
+Product Name: PUREFOODS
+Expiration Date: 2023-12-15
+Quantity: 4
+
 Product Name: SAN MARINO
 Expiration Date: 2023-12-15
-Quantity: 7
+Quantity: 9
 

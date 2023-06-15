@@ -3,10 +3,10 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
-
+import java.io.Console;
 
 public class Authen {
-    final static String account_dir = "C:\\Users\\ASUS\\Desktop\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\account\\";
+    final static String account_dir = "D:\\TUP SCHOOLWORKS\\2nd Year\\ACTIVITIES\\2ND SEM\\PROGRAMMING LANGUAGE\\PL-Project-Java\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\account\\";
     static Scanner console = new Scanner(System.in);
     static String name, username, password, ename, eusern, epass; 
     static String admin_fp, cashier_fp;
@@ -27,7 +27,8 @@ public class Authen {
     }
 
     
-    static int login(){    
+    static int login(){ 
+        Console cons;   
         do {
             Terminal.clearScreen();
             Terminal.gotoxy(15,10); System.out.println("=-=-= INVENTORY LOGIN =-=-=");
@@ -48,8 +49,16 @@ public class Authen {
         Terminal.gotoxy(15,10); System.out.println("=-=-=-= LOG IN =-=-=-=");
         Terminal.gotoxy(15,13); System.out.print("Enter username: ");
         username = console.nextLine();
-        Terminal.gotoxy(15,15); System.out.print("Enter password: ");
-        password = console.nextLine();
+
+        if((cons = System.console()) != null){
+            Terminal.gotoxy(15,15);
+            char[] charPass = cons.readPassword("Enter password: ");
+            password = new String(charPass);
+        }
+        else {
+            Terminal.gotoxy(15,15); System.out.print("Enter username: ");
+            password = console.nextLine();
+        }
 
         if(Main.choice == 1){          // cashier
             if(username.equals(Main.cashierAcc.getUsername())){

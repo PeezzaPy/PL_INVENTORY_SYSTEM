@@ -1,3 +1,6 @@
+Product Name: PUREFOODS
+Quantity: 4
+
 Product Name: SAN MARINO
-Quantity: 7
+Quantity: 9
 

@@ -136,8 +136,8 @@ public class Cashier {
         
         for(i=0; i<=receiptMarker; i++){
             Terminal.gotoxy(20,20+i); System.out.println(Main.customerReceipt[i].productName);
-            Terminal.gotoxy(38,20+i); System.out.println(Main.customerReceipt[i].quantity);
-            Terminal.gotoxy(56,20+i); System.out.println(Main.customerReceipt[i].price);
+            Terminal.gotoxy(38,20+i); System.out.println(Main.customerReceipt[i].price);
+            Terminal.gotoxy(56,20+i); System.out.println(Main.customerReceipt[i].quantity);
             Terminal.gotoxy(74,20+i); System.out.println(Main.customerReceipt[i].totalPrice);
             totalPrice += Main.customerReceipt[i].totalPrice;
         }

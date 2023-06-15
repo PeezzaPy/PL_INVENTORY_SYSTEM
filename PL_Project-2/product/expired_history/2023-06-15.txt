@@ -6,3 +6,9 @@ Product Name: MALUNGGAY
 Quantity: 3
 Profit Loss: 30.0
 
+
+
+Product Name: CHIPPY
+Quantity: 4
+Profit Loss: 40.0
+

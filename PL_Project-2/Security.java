@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Security {
-    final private static String key_dir = "C:\\Users\\ASUS\\Desktop\\Key\\key.txt";
+    final private static String key_dir = "D:\\TUP SCHOOLWORKS\\2nd Year\\ACTIVITIES\\2ND SEM\\PROGRAMMING LANGUAGE\\PL-Project-Java\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\Key\\key.txt";
     final private static String admin_fp = "adminacc";
     final private static String cashier_fp = "cashieracc";
     public static String previous_key;

@@ -8,11 +8,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class DataManager {
-    final static String inventory_dir = "C:\\Users\\ASUS\\Desktop\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\inventory.txt";
-    final static String productHistory_dir = "C:\\Users\\ASUS\\Desktop\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\product_history\\";
-    final static String expProductHistory_dir = "C:\\Users\\ASUS\\Desktop\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\expired_history\\";
-    final static String expDateProduct_dir = "C:\\Users\\ASUS\\Desktop\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\expiration_date_product\\";
-    final static String salesHistory_dir = "C:\\Users\\ASUS\\Desktop\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\sales_history\\";
+    final static String inventory_dir = "D:\\TUP SCHOOLWORKS\\2nd Year\\ACTIVITIES\\2ND SEM\\PROGRAMMING LANGUAGE\\PL-Project-Java\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\inventory.txt";
+    final static String productHistory_dir = "D:\\TUP SCHOOLWORKS\\2nd Year\\ACTIVITIES\\2ND SEM\\PROGRAMMING LANGUAGE\\PL-Project-Java\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\product_history\\";
+    final static String expProductHistory_dir = "D:\\TUP SCHOOLWORKS\\2nd Year\\ACTIVITIES\\2ND SEM\\PROGRAMMING LANGUAGE\\PL-Project-Java\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\expired_history\\";
+    final static String expDateProduct_dir = "D:\\TUP SCHOOLWORKS\\2nd Year\\ACTIVITIES\\2ND SEM\\PROGRAMMING LANGUAGE\\PL-Project-Java\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\expiration_date_product\\";
+    final static String salesHistory_dir = "D:\\TUP SCHOOLWORKS\\2nd Year\\ACTIVITIES\\2ND SEM\\PROGRAMMING LANGUAGE\\PL-Project-Java\\PROJECT_INVENTORY\\PL_INVENTORY_SYSTEM\\PL_Project-2\\product\\sales_history\\";
     static String data_line, time = "";
     static int colonIndex, ctr;
 

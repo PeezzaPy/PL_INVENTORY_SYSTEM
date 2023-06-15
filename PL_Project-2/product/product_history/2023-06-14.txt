@@ -8,7 +8,7 @@ Quantity: 3
 
 Product Name: MANGO
 Expiration Date: 2023-06-21
-Quantity: 4
+Quantity: 5
 
 Product Name: RED HORSE
 Expiration Date: 2023-12-14
